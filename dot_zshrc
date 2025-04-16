@@ -191,12 +191,8 @@ zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
 
 # Persistent ssh-agent per login session
-if [ -z "$SSH_AUTH_SOCK" ]; then
-  export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-
-  if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -a $SSH_AUTH_SOCK)" > /dev/null
-  fi
+if [ $(ps ax | grep "[s]sh-agent" | wc -l) -eq 0 ] ; then
+    eval $(ssh-agent -s) > /dev/null
 fi
 
 # flex
