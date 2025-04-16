@@ -161,6 +161,18 @@ fzyay() {
   [ -n "$pkg" ] && yay -S "$pkg"
 }
 
+fz_z() {
+  local dir
+  dir=$(zoxide query -l | fzf --height=40% --reverse --prompt="zoxide> ") || return
+
+  if [[ -n "$dir" ]]; then
+    BUFFER="cd ${(q)dir}"
+    zle accept-line
+  fi
+}
+zle -N fz_z
+bindkey '^f' fz_z
+
 chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 
 alias reset='clear && source ~/.zshrc'
