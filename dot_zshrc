@@ -161,7 +161,7 @@ chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 
 alias reset='clear && source ~/.zshrc'
 
-alias yay='yay --nodiffmenu --noeditmenu --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake'
+alias yay='yay --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake'
 
 # vi mode
 # bindkey -v
