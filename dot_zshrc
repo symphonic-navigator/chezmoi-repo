@@ -161,14 +161,16 @@ fzyay() {
   [ -n "$pkg" ] && yay -S "$pkg"
 }
 
+# FZF finder
 fz_z() {
   local dir
-  dir=$(zoxide query -l | fzf --height=40% --reverse --prompt="zoxide> ") || return
+  dir=$(zoxide query -l | fzf --height=40% --reverse --prompt="zoxide> ") || {
+    zle reset-prompt
+    return
+  }
 
-  if [[ -n "$dir" ]]; then
-    BUFFER="cd ${(q)dir}"
-    zle accept-line
-  fi
+  BUFFER="cd ${(q)dir}"
+  zle accept-line
 }
 zle -N fz_z
 bindkey '^f' fz_z
@@ -181,18 +183,12 @@ alias yay='yay --answerclean All --answerdiff N --answeredit N --answerupgrade Y
 
 # FZF History Search
 fzf-history-widget() {
-  BUFFER=$(fc -ln 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --border --ansi --tac --no-sort)
+  BUFFER=$(fc -ln 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --border --ansi --tac --no-sort --prompt="history> ")
   CURSOR=${#BUFFER}
   zle reset-prompt
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
-# vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
-# autoload edit-command-line; zle -N edit-command-ine
-# bindkey '^e' edit-command-line
 
 # Persistent ssh-agent per login session
 if [ -z "$SSH_AUTH_SOCK" ]; then
