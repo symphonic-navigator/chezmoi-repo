@@ -204,6 +204,9 @@ bindkey '^R' fzf-history-widget
 # SSH key store
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# Open AI
+export OPENAI_API_KEY=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
+
 # flex
 fastfetch
 
