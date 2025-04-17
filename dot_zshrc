@@ -1,212 +1,142 @@
-# I you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ~/.zshrc
 
-# Path to your oh-my-zsh installation.
+# 1. Environment Variables
+# -------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export EDITOR="nvim"
+export LANG="en_US.UTF-8"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
+# 2. History Configuration
+# -------------------------------------------------------------
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
-setopt APPEND_HISTORY            # Avoids overwriting history at session close
-setopt SHARE_HISTORY             # Shares history between sessions live
-setopt INC_APPEND_HISTORY        # Appends to history file immediately
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="false"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+setopt \
+APPEND_HISTORY \
+SHARE_HISTORY \
+INC_APPEND_HISTORY \
+HIST_IGNORE_DUPS \
+HIST_REDUCE_BLANKS \
+HIST_EXPIRE_DUPS_FIRST \
+HIST_VERIFY
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search vscode redis-cli sudo colorize colored-man-pages command-not-found archlinux docker docker-compose gh kubectl)
+# 3. Oh‑My‑Zsh Core
+# -------------------------------------------------------------
+ZSH_THEME="robbyrussell"
 
-source $ZSH/oh-my-zsh.sh
+plugins=(
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-history-substring-search
+    vscode
+    redis-cli
+    sudo
+    colored-man-pages
+    command-not-found
+    archlinux
+    docker
+    docker-compose
+    gh
+    kubectl
+)
 
-# User configuration
+source "$ZSH/oh-my-zsh.sh"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# 4. Prompt (Starship)
+# -------------------------------------------------------------
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-export EDITOR='nvim'
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# install starship
-eval 'source <(/usr/local/bin/starship init zsh --print-full-init)'
-
-# aliases
-alias ls="exa"
-alias vim="nvim"
-alias cat="bat"
-
-# zoxide
-_z_cd() {
-    cd "$@" || return "$?"
-
-    if [ "$_ZO_ECHO" = "1" ]; then
-        echo "$PWD"
-    fi
-}
-
-# Enhanced z() with fuzzy fallback, z -, and native zoxide query
-z() {
-    if [ "$#" -eq 0 ]; then
-        # No args: interactive fuzzy search with zoxide
-        _zoxide_result="$(zoxide query -i)" && cd "$_zoxide_result"
-    elif [ "$#" -eq 1 ] && [ "$1" = '-' ]; then
-        # Mimic 'cd -'
-        if [ -n "$OLDPWD" ]; then
-            cd "$OLDPWD"
-        else
-            echo 'zoxide: $OLDPWD is not set'
-            return 1
-        fi
-    else
-        # Direct jump using zoxide query
-        _zoxide_result="$(zoxide query -- "$@")" && cd "$_zoxide_result"
-    fi
-}
-
-zi() {
-    _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
-}
-
-alias za='zoxide add'
-
-alias zq='zoxide query'
-alias zqi='zoxide query -i'
-
-alias zr='zoxide remove'
-zri() {
-    _zoxide_result="$(zoxide query -i -- "$@")" && zoxide remove "$_zoxide_result"
-}
-
-_zoxide_hook() {
-    zoxide add "$(pwd -L)"
-}
-
-fzyay() {
-  local pkg=$(yay -Ss "$1" | fzf --preview 'yay -Si $(echo {} | awk "{print \$1}")' | awk '{print $1}')
-  [ -n "$pkg" ] && yay -S "$pkg"
-}
-
-# FZF finder
-fz_z() {
-  local dir
-  dir=$(zoxide query -l | fzf --height=40% --reverse --prompt="zoxide> ") || {
-    zle reset-prompt
-    return
-  }
-
-  BUFFER="cd ${(q)dir}"
-  zle accept-line
-}
-zle -N fz_z
-bindkey '^f' fz_z
-
-chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
-
+# 5. Aliases
+# -------------------------------------------------------------
+alias ls='exa'
+alias cat='bat'
+alias vim='nvim'
 alias reset='clear && source ~/.zshrc'
+alias yay='yay --answerclean All --answerdiff N --answeredit N
+--answerupgrade Y --removemake'
 
-alias yay='yay --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake'
+# 6. zoxide Integration
+# -------------------------------------------------------------
+if command -v zoxide >/dev/null 2>&1; then
+    # auto-add cwd on directory change
+    function _zoxide_add_cwd() {
+        zoxide add "$(pwd -L)"
+    }
+    chpwd_functions+=(_zoxide_add_cwd)
+    
+    # smart `z` jump
+    function z() {
+        if (( $# == 0 )); then
+            cd "$(zoxide query -i)"
+            elif [[ $1 == '-' ]]; then
+            cd "$OLDPWD" || return
+        else
+            cd "$(zoxide query -- "$@")"
+        fi
+    }
+    
+    function zi() { cd "$(zoxide query -i -- "$@")"; }
+    
+    alias za='zoxide add'
+    alias zq='zoxide query'
+    alias zqi='zoxide query -i'
+    alias zr='zoxide remove'
+    
+    function zri() {
+        zoxide remove "$(zoxide query -i -- "$@")"
+    }
+fi
 
-# FZF History Search
-fzf-history-widget() {
-  BUFFER=$(fc -ln 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --border --ansi --tac --no-sort --prompt="history> ")
-  CURSOR=${#BUFFER}
-  zle reset-prompt
+# 7. fzf Enhancements
+# -------------------------------------------------------------
+if command -v fzf >/dev/null 2>&1; then
+    
+    # directory picker
+    function fzf_z_jump() {
+        local dir
+        dir=$(zoxide query -l | fzf --height=40% --reverse --prompt="zoxide> ") || {
+            zle reset-prompt
+            return
+        }
+        
+        BUFFER="cd ${(q)dir}"
+        zle accept-line
+    }
+    zle -N fzf_z_jump
+    bindkey '^F' fzf_z_jump
+    zle -R
+    
+    # history search
+    fzf-history-widget() {
+        BUFFER=$(fc -ln 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --border --ansi --tac --no-sort --prompt="history> ")
+        CURSOR=${#BUFFER}
+        zle reset-prompt
+    }
+    zle -N fzf-history-widget
+    bindkey '^R' fzf-history-widget
+fi
+
+# 8. Utility Functions
+# -------------------------------------------------------------
+function yay_fzf() {
+    local pkg
+    pkg=$(yay -Ss "$1" | \
+        fzf --preview 'yay -Si {1}' | \
+    awk '{print $1}')
+    [[ -n $pkg ]] && yay -S "$pkg"
 }
-zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
 
-# SSH key store
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
-# Load personal/work environment
+# 9. Local Overrides
+# -------------------------------------------------------------
 [ -f ~/.local-env.sh ] && source ~/.local-env.sh
 
-# flex
+# 10. Misc
+# -------------------------------------------------------------
 fastfetch
-
