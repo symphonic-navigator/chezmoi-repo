@@ -51,6 +51,8 @@ source "$ZSH/oh-my-zsh.sh"
 # -------------------------------------------------------------
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
+else
+    echo "❌ starship not found. Please install starship to use the prompt."
 fi
 
 # 5. Aliases
@@ -59,12 +61,12 @@ alias ls='exa'
 alias cat='bat'
 alias vim='nvim'
 alias reset='clear && source ~/.zshrc'
-alias yay='yay --answerclean All --answerdiff N --answeredit N
---answerupgrade Y --removemake'
+alias yay='yay --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake'
 
 # 6. zoxide Integration
 # -------------------------------------------------------------
 if command -v zoxide >/dev/null 2>&1; then
+
     # auto-add cwd on directory change
     function _zoxide_add_cwd() {
         zoxide add "$(pwd -L)"
@@ -92,6 +94,8 @@ if command -v zoxide >/dev/null 2>&1; then
     function zri() {
         zoxide remove "$(zoxide query -i -- "$@")"
     }
+else
+    echo "❌ zoxide not found. Please install zoxide to use the zoxide integration."
 fi
 
 # 7. fzf Enhancements
@@ -121,22 +125,23 @@ if command -v fzf >/dev/null 2>&1; then
     }
     zle -N fzf-history-widget
     bindkey '^R' fzf-history-widget
+    
+    # fzf in yay
+    function yay_fzf() {
+        local pkg
+        pkg=$(yay -Ss "$1" | \
+            fzf --preview 'yay -Si {1}' | \
+        awk '{print $1}')
+        [[ -n $pkg ]] && yay -S "$pkg"
+    }
+else
+    echo "❌ fzf not found. Please install fzf to use the fzf enhancements."
 fi
 
-# 8. Utility Functions
-# -------------------------------------------------------------
-function yay_fzf() {
-    local pkg
-    pkg=$(yay -Ss "$1" | \
-        fzf --preview 'yay -Si {1}' | \
-    awk '{print $1}')
-    [[ -n $pkg ]] && yay -S "$pkg"
-}
-
-# 9. Local Overrides
+# 8. Local Overrides
 # -------------------------------------------------------------
 [ -f ~/.local-env.sh ] && source ~/.local-env.sh
 
-# 10. Misc
+# 9. Misc
 # -------------------------------------------------------------
 fastfetch
