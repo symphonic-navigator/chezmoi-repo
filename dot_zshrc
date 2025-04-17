@@ -124,7 +124,7 @@ if command -v fzf >/dev/null 2>&1; then
     
     # history search
     fzf-history-widget() {
-        BUFFER=$(fc -ln 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --border --ansi --tac --no-sort --prompt="history> ")
+        BUFFER=$(fc -lnr 1 | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//' | fzf --height 40% --layout=reverse --no-sort --prompt="history> ")
         CURSOR=${#BUFFER}
         zle reset-prompt
     }
