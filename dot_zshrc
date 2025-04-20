@@ -16,13 +16,13 @@ SAVEHIST=10000
 HIST_STAMPS="yyyy-mm-dd"
 
 setopt \
-APPEND_HISTORY \
-SHARE_HISTORY \
-INC_APPEND_HISTORY \
-HIST_IGNORE_DUPS \
-HIST_REDUCE_BLANKS \
-HIST_EXPIRE_DUPS_FIRST \
-HIST_VERIFY
+  APPEND_HISTORY \
+  SHARE_HISTORY \
+  INC_APPEND_HISTORY \
+  HIST_IGNORE_DUPS \
+  HIST_REDUCE_BLANKS \
+  HIST_EXPIRE_DUPS_FIRST \
+  HIST_VERIFY
 
 # 3. Oh‑My‑Zsh Core
 # -------------------------------------------------------------
@@ -67,6 +67,9 @@ alias ghce='gh copilot explain'
 alias ghcs='gh copilot suggest'
 alias wlc='wl-copy'
 alias wlp='wl-paste'
+alias cea='f() { chezmoi edit "$@" && chezmoi apply }; f'
+alias cear='f() { chezmoi edit "$@" && chezmoi apply && clear && reset }; f'
+alias cdc='cd ~/.local/share/chezmoi'
 
 # 6. zoxide Integration
 # -------------------------------------------------------------
