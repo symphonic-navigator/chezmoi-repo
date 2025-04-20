@@ -53,3 +53,4 @@ require("lazy").setup({
 })
 
 require("config.markdown")
+require("config.pandoc-preview")
