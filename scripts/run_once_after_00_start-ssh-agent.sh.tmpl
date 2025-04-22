@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e  # Exit on error
+
+# Reload systemd user units (safe even if already done)
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+
+# Enable and start ssh-agent as user service
+systemctl --user enable --now ssh-agent.service
+
+# Ensure lingering is active for the user
+loginctl enable-linger "$USER"
+
+echo "✅ ssh-agent user service set up and running."
+
