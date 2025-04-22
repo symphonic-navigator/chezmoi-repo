@@ -58,10 +58,4 @@ if ! grep -q "eval \"\$(starship init zsh)\"" ~/.zshrc; then
     echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 fi
 
-# Install OpenAI codex
-sudo npm install -g @openai/codex
-
-# Install github copilot cli
-gh extension install github/gh-copilot --force
-
 echo "✅ Done!"
