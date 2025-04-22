@@ -1,7 +1,9 @@
+use_nerd_font = "true"
+
 [theme]
-background = "#1a1b26"
-primary = "#9aa5ce"
-secondary = "#414868"
+#background = "#1a1b26aa"
+primary = "#c0caf5"
+secondary = "#636a8a"
 title = "#9ece6a"
 playing = "#7aa2f7"
 playing_selected = "#bb9af7"
