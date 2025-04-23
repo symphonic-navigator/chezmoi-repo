@@ -3,7 +3,7 @@ sleep_time = 2
 
 [kitty]
 identifier = kitty.*quake-mode-console
-command = kitty --title "quake-mode-console" zellij
+command = kitty --title "quake-mode-console"
 
 [ncspot]
 identifier = kitty.*quake-mode-spotify
