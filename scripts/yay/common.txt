@@ -1,5 +1,6 @@
 bat
 bind
+bitwarden-bin
 bluedevil
 bluez
 bluez-utils
