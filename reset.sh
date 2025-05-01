@@ -1,3 +1,3 @@
 #! /bin/bash
 
-chezmoi state delete-bucket --bucket=scriptState
+chezmoi state reset --force
