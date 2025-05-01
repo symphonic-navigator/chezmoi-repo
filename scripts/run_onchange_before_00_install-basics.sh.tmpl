@@ -26,12 +26,15 @@ install_zsh_plugin() {
 yay -Syu
 
 # install the basics
-install-yay --needed - < $SCRIPTDIR/yay/common.txt
+install-yay --needed - <$SCRIPTDIR/yay/common.txt
+
+# install dotnet scripting
+dotnet tool install -g dotnet-script
 
 # Install oh-my-zsh if not present
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing oh-my-zsh..."
-    RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  echo "Installing oh-my-zsh..."
+  RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Set ZSH_CUSTOM path
@@ -45,17 +48,18 @@ install_zsh_plugin https://github.com/zsh-users/zsh-history-substring-search.git
 
 # Make sure plugins are in .zshrc
 if ! grep -q "zsh-syntax-highlighting" ~/.zshrc; then
-    sed -i '/^plugins=/ s/)/ zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+  sed -i '/^plugins=/ s/)/ zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
 fi
 
 # Install starship prompt
 if ! command -v starship &>/dev/null; then
-    curl -sS https://starship.rs/install.sh | sh -s -- -y
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
 
 # Add starship init to .zshrc if missing
 if ! grep -q "eval \"\$(starship init zsh)\"" ~/.zshrc; then
-    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+  echo 'eval "$(starship init zsh)"' >>~/.zshrc
 fi
 
 echo "✅ Done!"
+

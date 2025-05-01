@@ -3,7 +3,7 @@
 # 1. Environment Variables
 # -------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:$HOME/.dotnet/tools"
 export EDITOR="nvim"
 export LANG="en_US.UTF-8"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

@@ -10,6 +10,8 @@ chezmoi
 cmatrix
 cowsay
 dkms
+dotnet-sdk-8.0
+dotnet-sdk-9.0
 linux-header
 exa
 eza
@@ -53,6 +55,7 @@ ttf-firacode-nerd
 ttf-liberation
 ttf-opensans
 visual-studio-code-bin
+vivaldi
 vlc
 wireplumber
 wl-clipboard
