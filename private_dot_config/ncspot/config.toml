@@ -3,6 +3,7 @@ initial_screen = "queue"
 audio_cache_size = 4096
 notify = true
 repeat = "off"
+volnorm = true
 
 [theme]
 #background = "#1a1b26"
