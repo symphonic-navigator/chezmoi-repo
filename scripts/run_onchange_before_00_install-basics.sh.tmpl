@@ -24,70 +24,7 @@ install_zsh_plugin() {
 
 # install the basics
 install-yay --needed \
-  bat\
-  bind\
-  bitwarden-bin\
-  bluedevil\
-  bluez\
-  bluez-utils\
-  bpytop\
-  cava\
-  chezmoi\
-  cmatrix\
-  cowsay\
-  dkms\
-  dotnet-sdk-8.0\
-  dotnet-sdk-9.0\
-  exa\
-  eza\
-  fastfetch\
-  git\
-  github-cli\
-  google-chrome\
-  hunspell-de\
-  jetbrains-toolbox\
-  jq\
-  kitty\
-  kolourpaint\
-  linux-header\
-  linux-headers\
-  lolcat\
-  mc\
-  ncspot\
-  neovim\
-  nodejs\
-  npm\
-  obsidian\
-  pandoc\
-  passpony\
-  pavucontrol\
-  piper\
-  ponysay\
-  python-dbus\
-  python-pip\
-  python-pynvim\
-  python-pyperclip\
-  qalculate-qt\
-  ranger\
-  tldr\
-  tmate\
-  ttf-b612\
-  ttf-bitstream-vera\
-  ttf-crimson\
-  ttf-dejavu\
-  ttf-firacode\
-  ttf-firacode-nerd\
-  ttf-liberation\
-  ttf-opensans\
-  visual-studio-code-bin\
-  vivaldi\
-  vlc\
-  wireplumber\
-  wl-clipboard\
-  zellij\
-  zoxide\
-  zsh\
-
+  bat bind bitwarden-bin bluedevil bluez bluez-utils bpytop cava chezmoi cmatrix cowsay dkms dotnet-sdk-8.0 dotnet-sdk-9.0 exa eza fastfetch git github-cli google-chrome hunspell-de jetbrains-toolbox jq kitty kolourpaint linux-header linux-headers lolcat mc ncspot neovim nodejs npm obsidian pandoc passpony pavucontrol piper ponysay python-dbus python-pip python-pynvim python-pyperclip qalculate-qt ranger tldr tmate ttf-b612 ttf-bitstream-vera ttf-crimson ttf-dejavu ttf-firacode ttf-firacode-nerd ttf-liberation ttf-opensans visual-studio-code-bin vivaldi vlc wireplumber wl-clipboard zellij zoxide zsh
 # update everything
 yay -Syu
 
@@ -108,6 +45,7 @@ echo "Installing oh-my-zsh plugins..."
 install_zsh_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git zsh-syntax-highlighting
 install_zsh_plugin https://github.com/zsh-users/zsh-autosuggestions.git zsh-autosuggestions
 install_zsh_plugin https://github.com/zsh-users/zsh-history-substring-search.git zsh-history-substring-search
+install_zsh_plugin https://github.com/jeffreytse/zsh-vi-mode zsh-vi-mode
 
 # Make sure plugins are in .zshrc
 if ! grep -q "zsh-syntax-highlighting" ~/.zshrc; then
