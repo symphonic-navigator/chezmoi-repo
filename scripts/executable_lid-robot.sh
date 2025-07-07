@@ -10,8 +10,8 @@ SCREEN_OFF=', disable'
 
 if [[ "$LID_STATE" == *closed* ]]; then
   brightnessctl --quiet --device=$KBD_BACKLIGHT_DEVICE set 0
-  hyprctl --quiet keyword "output $INTERNAL_SCREEN $SCREEN_OFF"
+  hyprctl --quiet keyword "monitor $INTERNAL_SCREEN $SCREEN_OFF"
 else
   brightnessctl --quiet --device=$KBD_BACKLIGHT_DEVICE set 1
-  hyprctl --quiet keyword "output $INTERNAL_SCREEN $SCREEN_ON"
+  hyprctl --quiet keyword "monitor $INTERNAL_SCREEN $SCREEN_ON"
 fi
