@@ -1,17 +1,29 @@
-#! /bin/bash
-
-LID_STATE=$(cat /proc/acpi/button/lid/LID*/state)
-
-KBD_BACKLIGHT_DEVICE='white:kbd_backlight'
+#!/bin/bash
 
 INTERNAL_SCREEN='eDP-1'
 SCREEN_ON=', preferred, auto, 1'
 SCREEN_OFF=', disable'
+KBD_BACKLIGHT_DEVICE='white:kbd_backlight'
 
-if [[ "$LID_STATE" == *closed* ]]; then
+# Get all connected monitor names
+CONNECTED=$(hyprctl monitors all | grep -E '^Monitor' | awk '{print $2}')
+
+# Assume internal is needed unless we find an external
+EXTERNAL_CONNECTED=0
+
+for MON in $CONNECTED; do
+  if [[ "$MON" != "$INTERNAL_SCREEN" ]]; then
+    EXTERNAL_CONNECTED=1
+    break
+  fi
+done
+
+if [[ "$EXTERNAL_CONNECTED" -eq 1 ]]; then
+  # External monitor present: disable internal display
   brightnessctl --quiet --device=$KBD_BACKLIGHT_DEVICE set 0
-  hyprctl --quiet keyword "monitor $INTERNAL_SCREEN $SCREEN_OFF"
+  hyprctl keyword monitor "$INTERNAL_SCREEN $SCREEN_OFF"
 else
+  # No external monitor: enable internal display
   brightnessctl --quiet --device=$KBD_BACKLIGHT_DEVICE set 1
-  hyprctl --quiet keyword "monitor $INTERNAL_SCREEN $SCREEN_ON"
+  hyprctl keyword monitor "$INTERNAL_SCREEN $SCREEN_ON"
 fi
