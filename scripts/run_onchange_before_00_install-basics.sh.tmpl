@@ -6,7 +6,11 @@ set -u
 SCRIPTDIR="{{ .chezmoi.sourceDir }}/scripts"
 
 install-yay() {
-  command yay -Sy --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake "$@"
+  command yay -Sy --needed --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake "$@"
+}
+
+install-pacman() {
+  command sudo pacman -Sy --needed --noconfirm "$@"
 }
 
 install_zsh_plugin() {
@@ -22,11 +26,69 @@ install_zsh_plugin() {
   fi
 }
 
-# install the basics
-install-yay --needed \
-  bat bind bitwarden-bin bluedevil bluez bluez-utils bpytop brightnessctl cava chezmoi cmatrix cowsay dkms dotnet-sdk-8.0 dotnet-sdk-9.0 exa eza fastfetch git github-cli hunspell-de jetbrains-toolbox jq kitty kolourpaint linux-header linux-headers lolcat mc ncspot neovim nodejs npm obsidian pandoc passpony pavucontrol piper ponysay python-dbus python-pip python-pynvim python-pyperclip qalculate-qt ranger tldr tmate ttf-b612 ttf-bitstream-vera ttf-crimson ttf-dejavu ttf-firacode ttf-firacode-nerd ttf-liberation ttf-opensans visual-studio-code-bin vlc wireplumber wl-clipboard yazi zoxide zsh
 # update everything
-yay -Syu
+sudo pacman -Syu --noconfirm
+yay -Syu --answerclean All --answerdiff N --answeredit N --answerupgrade Y --removemake --noconfirm
+
+# install the basics
+install-pacman \
+  bat \
+  bind \
+  bluedevil \
+  bluez \
+  bluez-utils \
+  bpytop \
+  brightnessctl \
+  cava \
+  chezmoi \
+  cmatrix \
+  dkms \
+  dotnet-sdk-8.0 \
+  dotnet-sdk-9.0 \
+  exa \
+  eza \
+  fastfetch \
+  git \
+  github-cli \
+  hunspell-de \
+  jq \
+  kitty \
+  kolourpaint \
+  linux-headers \
+  ncspot \
+  neovim \
+  nodejs \
+  npm \
+  obsidian \
+  pandoc \
+  pavucontrol \
+  piper \
+  ponysay \
+  python-dbus \
+  python-pip \
+  python-pynvim \
+  python-pyperclip \
+  qalculate-gtk \
+  tldr \
+  ttf-bitstream-vera \
+  ttf-crimson \
+  ttf-dejavu \
+  ttf-firacode-nerd \
+  ttf-liberation \
+  ttf-opensans \
+  wireplumber \
+  wl-clipboard \
+  yazi \
+  zoxide \
+  zsh
+install-yay \
+  bitwarden-bin \
+  jetbrains-toolbox \
+  passpony \
+  ttf-b612 \
+  tuxedo-control-center-bin \
+  visual-studio-code-bin \
+  zen-browser-bin
 
 # install dotnet scripting
 dotnet tool install -g dotnet-script
