@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Hyprland Laptop Display Controller every 5 seconds
+
+[Timer]
+OnBootSec=10s
+OnUnitActiveSec=5s
+AccuracySec=1s
+Unit=laptop-controller.service
+
+[Install]
+WantedBy=default.target
+

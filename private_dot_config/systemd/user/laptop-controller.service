@@ -1,0 +1,7 @@
+[Unit]
+Description=Hyprland Laptop Display Controller
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/laptop-controller.sh
+

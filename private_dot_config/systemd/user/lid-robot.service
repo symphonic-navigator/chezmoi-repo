@@ -1,6 +1,0 @@
-[Unit]
-Description=lid-robot
-
-[Service]
-Type=oneshot
-ExecStart=/home/chris/scripts/lid-robot.sh
