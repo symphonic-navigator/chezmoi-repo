@@ -28,9 +28,9 @@ else
   LID_STATE=$(cat /proc/acpi/button/lid/LID*/state)
 
   if [[ "$LID_STATE" == *closed* ]]; then
-    KBD_BACKLIGHT_BRIGHTNESS="$LID_OPEN_KEYBOARD_BACKLIGHT_BRIGHTNESS"
-  else
     KBD_BACKLIGHT_BRIGHTNESS=0
+  else
+    KBD_BACKLIGHT_BRIGHTNESS="$LID_OPEN_KEYBOARD_BACKLIGHT_BRIGHTNESS"
   fi
 
   brightnessctl --quiet --device=$KBD_BACKLIGHT_DEVICE set "$KBD_BACKLIGHT_BRIGHTNESS"
