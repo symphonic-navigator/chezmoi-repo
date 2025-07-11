@@ -3,25 +3,25 @@
 set -e
 set -u
 
+if echo "$XDG_CURRENT_DESKTOP" | grep -qi "hyprland"; then
+  echo "❌ not on hyprland, exiting."
+  exit 1
+fi
+
 IS_LAPTOP=false
 if ls /sys/class/power_supply/ | grep -qi BAT; then
   IS_LAPTOP=true
 fi
 
-IS_HYPRLAND=false
-if echo "$XDG_CURRENT_DESKTOP" | grep -qi "hyprland"; then
-  IS_HYPRLAND=true
-fi
-
-if [[ "$IS_HYPRLAND" == false ]]; then
-  echo "❌ not on hyprland, exiting."
-  exit 1
-fi
+# --- Common Setup ---
+# todo: add hyprland setup for all kits here
+echo "✅ common hyprland setup."
 
 if [[ "$IS_LAPTOP" == false ]]; then
-  echo "❌ not a laptop, exiting."
+  echo "ℹ️ not a laptop, exiting."
   exit 2
 fi
 
+# --- Laptop Setup ---
 systemctl --user enable lid-robot.timer
 echo "✅ hyprland laptop setup successfully established."
