@@ -43,20 +43,24 @@ install-pacman \
   chezmoi \
   cmatrix \
   dkms \
+  drawio-desktop \
   dotnet-sdk-8.0 \
   dotnet-sdk-9.0 \
   exa \
   eza \
   fastfetch \
+  gamemode \
   git \
   github-cli \
   hunspell-de \
   jq \
   kitty \
   kolourpaint \
+  libreoffice-fresh \
   linux-headers \
   ncspot \
   neovim \
+  nextcloud-client \
   nodejs \
   npm \
   obsidian \
@@ -69,6 +73,8 @@ install-pacman \
   python-pynvim \
   python-pyperclip \
   qalculate-gtk \
+  telegram-desktop \
+  thunderbird \
   tldr \
   ttf-bitstream-vera \
   ttf-crimson \
@@ -86,9 +92,18 @@ install-yay \
   jetbrains-toolbox \
   passpony \
   ttf-b612 \
-  tuxedo-control-center-bin \
   visual-studio-code-bin \
+  xpadneo-dkms \
   zen-browser-bin
+
+# clevo / tuxedo / xmg hardware detection
+if hostnamectl | grep -qi 'tuxedo\|xmg\|clevo'; then
+  echo "🖥️ Detected TUXEDO / XMG / Clevo hardware"
+
+  install-yay \
+    tuxedo-control-center-bin \
+    tuxedo-drivers-dkms
+fi
 
 # install dotnet scripting
 dotnet tool install -g dotnet-script
