@@ -27,5 +27,5 @@ if [[ "$IS_LAPTOP" == false ]]; then
 fi
 
 # --- Laptop Setup ---
-systemctl --user enable --now laptop-controller.timer
+systemctl --user enable --now hyprland-laptop-controller.timer
 echo "✅ hyprland laptop setup successfully established."
