@@ -1,8 +1,8 @@
 [Unit]
-Description=Run Hyprland Laptop Display Controller every 5 seconds
+Description=Run Hyprland Laptop Controller every 5 seconds
 
 [Timer]
-OnBootSec=10s
+OnBootSec=5s
 OnUnitActiveSec=5s
 AccuracySec=1s
 Unit=hyprland-laptop-controller.service

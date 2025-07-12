@@ -18,7 +18,7 @@ systemctl --user daemon-reexec
 systemctl --user daemon-reload
 
 # --- Common Setup ---
-# todo: add hyprland setup for all kits here
+systemctl --user enable --now hyprland-keep-ncspot-alive.timer
 echo "✅ common hyprland setup."
 
 if [[ "$IS_LAPTOP" == false ]]; then

@@ -1,5 +1,5 @@
 [Unit]
-Description=Hyprland Laptop Display Controller
+Description=Hyprland Laptop Controller
 
 [Service]
 Type=oneshot
