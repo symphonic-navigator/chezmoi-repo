@@ -3,7 +3,8 @@
 /*  As stated on title, best style for vertical layout waybar config */
 
 * {
-	font-family: "JetBrainsMono Nerd Font";
+	/* font-family: "JetBrainsMono Nerd Font"; */
+	font-family: "FiraCode Nerd Font";
 	font-weight: bold;
 	min-height: 0;
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
@@ -88,12 +89,10 @@ tooltip label {
 #taskbar,
 #temperature,
 #tray,
-#window,
 #wireplumber,
 #workspaces,
 #custom-backlight,
 #custom-browser,
-#custom-cava_mviz,
 #custom-cycle_wall,
 #custom-dot_update,
 #custom-file_manager,
@@ -104,7 +103,6 @@ tooltip label {
 #custom-hint,
 #custom-hypridle,
 #custom-menu,
-#custom-playerctl,
 #custom-power_vertical,
 #custom-power,
 #custom-quit,
@@ -130,6 +128,20 @@ tooltip label {
   padding-bottom: 4px;
   padding-right: 6px;
   padding-left: 6px;
+}
+
+#custom-cava_mviz {
+  color: @blue;
+}
+
+#custom-playerctl {
+  color: @maroon;
+  font-weight: normal;
+  min-width: 640px;
+}
+
+#window {
+  color: @green;
 }
 
 #idle_inhibitor {

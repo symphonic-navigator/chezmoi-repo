@@ -17,27 +17,25 @@
 "spacing": 3,
 "fixed-center": true,
 "ipc": true,
-"margin-top": 3,
+"margin-top": 2,
 "margin-left": 8,
 "margin-right": 8,
+"margin-bottom": -4,
 
 "modules-left": [
-  "custom/separator#blank_2",
-  "custom/arch",
-  "custom/separator#blank_2",
+  "custom/separator#blank",
 	"custom/cava_mviz",
-	"custom/separator#blank",
+	"custom/separator#blank_2",
 	"custom/playerctl",
 	"custom/separator#blank_2",
 	"hyprland/window",
 	],
 
 "modules-center": [
-	"group/app_drawer",
-	"custom/separator#blank",
 	"group/notify",
 	"custom/separator#dot-line",
 	"hyprland/workspaces#rw",
+	"custom/separator#dot-line",
 	"clock",
 	"custom/separator#dot-line",
 	"custom/weather",
@@ -46,21 +44,14 @@
 	],
 
 "modules-right": [
-	"tray",
-	"network#speed",
+	"group/audio",
+	"custom/separator#dot-line",
+	"group/mobo_drawer",
 	"custom/separator#dot-line",
 	"group/laptop",
 	"custom/separator#dot-line",
-	"group/mobo_drawer",
-	"custom/separator#line",  
-	"group/audio",
-	"custom/separator#dot-line", 
-	"group/status",
+	"tray"
 	],
 
-"custom/arch": {
-      "format":" ",
-      "tooltip": false,
-      "on-click": "rofi -show drun"
 }
 }
