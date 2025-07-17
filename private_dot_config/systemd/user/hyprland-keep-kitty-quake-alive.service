@@ -1,0 +1,7 @@
+[Unit]
+Description=Hyprland "keep kitty quake alive"
+
+[Service]
+Type=oneshot
+ExecStart=hyprctl dispatch exec %h/.local/bin/hyprland-keep-kitty-quake-alive.sh
+

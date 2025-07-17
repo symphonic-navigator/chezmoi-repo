@@ -18,6 +18,7 @@ systemctl --user daemon-reexec
 systemctl --user daemon-reload
 
 # --- Common Setup ---
+systemctl --user enable --now hyprland-keep-kitty-quake-alive.timer
 systemctl --user enable --now hyprland-keep-ncspot-alive.timer
 echo "✅ common hyprland setup."
 
@@ -27,5 +28,5 @@ if [[ "$IS_LAPTOP" == false ]]; then
 fi
 
 # --- Laptop Setup ---
-systemctl --user enable --now hyprland-laptop-controller.timer
+# systemctl --user enable --now hyprland-laptop-controller.timer
 echo "✅ hyprland laptop setup successfully established."
