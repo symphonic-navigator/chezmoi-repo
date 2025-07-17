@@ -8,4 +8,8 @@ if ! echo "$XDG_CURRENT_DESKTOP" | grep -qi "hyprland"; then
   fi
 fi
 
+if [ -n "$KITTY_SHELL_OVERRIDE" ]; then
+  exec "$KITTY_SHELL_OVERRIDE"
+fi
+
 exec "$SHELL"
