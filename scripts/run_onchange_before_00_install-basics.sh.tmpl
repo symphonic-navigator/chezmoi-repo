@@ -44,12 +44,9 @@ install-pacman \
   cmatrix \
   dkms \
   drawio-desktop \
-  dotnet-sdk-8.0 \
-  dotnet-sdk-9.0 \
   exa \
   eza \
   fastfetch \
-  gamemode \
   git \
   github-cli \
   hunspell-de \
@@ -60,20 +57,17 @@ install-pacman \
   linux-headers \
   ncspot \
   neovim \
-  nextcloud-client \
   nodejs \
   npm \
   obsidian \
   pandoc \
   pavucontrol \
   piper \
-  ponysay \
   python-dbus \
   python-pip \
   python-pynvim \
   python-pyperclip \
   qalculate-gtk \
-  telegram-desktop \
   thunderbird \
   tldr \
   ttf-bitstream-vera \
@@ -92,10 +86,8 @@ install-pacman \
 install-yay \
   bitwarden-bin \
   jetbrains-toolbox \
-  passpony \
   ttf-b612 \
   visual-studio-code-bin \
-  xpadneo-dkms \
   zen-browser-bin
 
 # clevo / tuxedo / xmg hardware detection
@@ -106,9 +98,6 @@ if hostnamectl | grep -qi 'tuxedo\|xmg\|clevo'; then
     tuxedo-control-center-bin \
     tuxedo-drivers-dkms
 fi
-
-# install dotnet scripting
-dotnet tool install -g dotnet-script
 
 # Install oh-my-zsh if not present
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
