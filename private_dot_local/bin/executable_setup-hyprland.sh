@@ -29,7 +29,7 @@ fi
 
 if [[ "$IS_NVIDIA" == true ]]; then
   echo "ℹ️ nvidia detected!"
-  cp ~/.config/hypr/UserConfigs/hardware/nvidia.conf "$GPU_ENV_FILE"
+  cp ~/.config/hypr/UserConfigs/hardware/nvidia_env.conf "$GPU_ENV_FILE"
 else
   echo "ℹ️ non-nvidia GPU detected!"
   cp ~/.config/hypr/UserConfigs/hardware/other_gpu_env.conf "$GPU_ENV_FILE"
