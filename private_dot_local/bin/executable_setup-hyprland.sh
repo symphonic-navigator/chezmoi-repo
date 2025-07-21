@@ -3,6 +3,8 @@
 set -e
 set -u
 
+GPU_ENV_FILE=$HOME/.config/hypr/UserConfigs/gpu_env.local.conf
+
 if ! echo "$XDG_CURRENT_DESKTOP" | grep -qi "hyprland"; then
   echo "❌ not on hyprland, exiting."
   exit 1
@@ -17,6 +19,22 @@ fi
 systemctl --user daemon-reexec
 systemctl --user daemon-reload
 
+# --- Hardware Setup ---
+
+if inxi -G | grep -iq nvidia; then
+  IS_NVIDIA=true
+else
+  IS_NVIDIA=false
+fi
+
+if [[ "$IS_NVIDIA" == true ]]; then
+  echo "ℹ️ nvidia detected!"
+  cp ~/.config/hypr/UserConfigs/hardware/nvidia.conf "$GPU_ENV_FILE"
+else
+  echo "ℹ️ non-nvidia GPU detected!"
+  cp ~/.config/hypr/UserConfigs/hardware/other_gpu_env.conf "$GPU_ENV_FILE"
+fi
+
 # --- Common Setup ---
 systemctl --user enable --now hyprland-keep-kitty-quake-alive.timer
 systemctl --user enable --now hyprland-keep-ncspot-alive.timer
@@ -30,3 +48,7 @@ fi
 # --- Laptop Setup ---
 # systemctl --user enable --now hyprland-laptop-controller.timer
 echo "✅ hyprland laptop setup successfully established."
+
+# --- Reload hyprland ---
+hyprctl reload -q
+echo "✅ hyprctl reload successfully performed."

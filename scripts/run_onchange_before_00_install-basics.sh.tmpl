@@ -141,4 +141,8 @@ if ! grep -q "eval \"\$(starship init zsh)\"" ~/.zshrc; then
   echo 'eval "$(starship init zsh)"' >>~/.zshrc
 fi
 
+# hyprland preparation
+mkdir -p ~/.config/hypr/UserConfigs
+touch ~/.config/hypr/UserConfigs/gpu_env.local.conf
+
 echo "✅ Done!"

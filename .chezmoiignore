@@ -1,0 +1,10 @@
+**/.local-env.sh
+**/known_hosts
+**/id_rsa
+**/id_rsa.pub
+**/*.bak
+**/*.bak.*
+**/lazy-lock.json
+**/userstate.cbor
+**/*.local.conf
+
