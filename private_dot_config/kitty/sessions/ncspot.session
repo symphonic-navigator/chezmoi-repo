@@ -1,7 +1,7 @@
 enabled_layouts tall
 
-launch ncspot
-title ncspot
+launch spotify_player
+title spotify_player
 
 launch --location=hsplit cava
 
