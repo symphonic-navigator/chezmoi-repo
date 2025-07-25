@@ -30,6 +30,9 @@ fi
 if [[ "$IS_NVIDIA" == true ]]; then
   echo "ℹ️ nvidia detected!"
   cp ~/.config/hypr/UserConfigs/hardware/nvidia_env.conf "$GPU_ENV_FILE"
+
+  echo "🔧 Enabling nvidia power management..."
+  sudo systemctl enable --now nvidia-powerd.service
 else
   echo "ℹ️ non-nvidia GPU detected!"
   cp ~/.config/hypr/UserConfigs/hardware/other_gpu_env.conf "$GPU_ENV_FILE"
@@ -46,7 +49,6 @@ if [[ "$IS_LAPTOP" == false ]]; then
 fi
 
 # --- Laptop Setup ---
-# systemctl --user enable --now hyprland-laptop-controller.timer
 echo "✅ hyprland laptop setup successfully established."
 
 # --- Reload hyprland ---
