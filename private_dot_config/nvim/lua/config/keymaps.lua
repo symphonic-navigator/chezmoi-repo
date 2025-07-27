@@ -9,3 +9,6 @@ vim.keymap.set("v", "ö", ":", { noremap = true })
 
 vim.keymap.set("n", "-", "/", { noremap = true })
 vim.keymap.set("v", "-", "/", { noremap = true })
+
+vim.keymap.set("n", "_", "?", { noremap = true })
+vim.keymap.set("v", "_", "?", { noremap = true })
