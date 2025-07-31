@@ -4,8 +4,8 @@
 --
 vim.keymap.set("n", "<leader>mp", ":PandocPreview<CR>", { desc = "Preview render in browser" })
 
-vim.keymap.set("n", "ö", ":", { noremap = true })
-vim.keymap.set("v", "ö", ":", { noremap = true })
+vim.keymap.set("n", "Ö", ":", { noremap = true })
+vim.keymap.set("v", "Ö", ":", { noremap = true })
 
 vim.keymap.set("n", "-", "/", { noremap = true })
 vim.keymap.set("v", "-", "/", { noremap = true })
