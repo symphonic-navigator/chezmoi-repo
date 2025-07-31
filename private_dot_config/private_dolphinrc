@@ -1,0 +1,15 @@
+[General]
+EditableUrl=true
+ShowFullPath=true
+Version=202
+ViewPropsTimestamp=2025,7,31,21,45,24.565
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,windowsexethumbnail,imagethumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,jpegthumbnail,kraorathumbnail,windowsimagethumbnail,opendocumentthumbnail,directorythumbnail,svgthumbnail,gdk-pixbuf-thumbnailer,gsf-office
