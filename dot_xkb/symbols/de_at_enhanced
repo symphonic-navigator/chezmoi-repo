@@ -1,16 +1,16 @@
 partial alphanumeric_keys modifier_keys
-xkb_symbols "de_at_enhanced" {
+xkb_symbols "basic" {
     include "at(nodeadkeys)"
 
     name[Group1]="de_at_enhanced";
 
     // ALTGR mappings
-    key <AC01> { [ a, A, braceleft ] };       // AltGr+A = {
-    key <AC02> { [ s, S, bracketleft ] };     // AltGr+S = [
-    key <AC03> { [ d, D, parenleft ] };       // AltGr+D = (
-    key <AC04> { [ f, F, parenright ] };      // AltGr+F = )
-    key <AC05> { [ g, G, bracketright ] };    // AltGr+G = ]
-    key <AC06> { [ h, H, braceright ] };      // AltGr+H = }
+    key <AD02> { [ w, W, braceleft ] };       // AltGr+W = {
+    key <AC01> { [ a, A, bracketleft ] };     // AltGr+A = [
+    key <AC02> { [ s, S, parenleft ] };       // AltGr+S = (
+    key <AC03> { [ d, D, parenright ] };      // AltGr+D = )
+    key <AC04> { [ f, F, bracketright ] };    // AltGr+F = ]
+    key <AD04> { [ r, R, braceright ] };      // AltGr+R = }
     key <AD11> { [ udiaeresis, Udiaeresis, grave ] }; // AltGr+Ü = `
-}
-
+    key <BKSL> { [ numbersign, apostrophe, apostrophe, apostrophe ] }; // AltGr+# = '
+};
