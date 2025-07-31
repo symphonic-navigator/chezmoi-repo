@@ -1,0 +1,20 @@
+partial alphanumeric_keys modifier_keys
+xkb_symbols "dev" {
+    include "us"
+
+    name[Group1]="us bastard dev layer";
+
+    // Swap Z and Y (QWERTZ muscle memory)
+    key <AB01> { [ y, Y ] };  // Z key → Y
+    key <AB06> { [ z, Z ] };  // Y key → Z
+
+    // AltGr mapping (replicates DE layer)
+    key <AC01> { [ a, A, braceleft ] };       // AltGr+A = {
+    key <AC02> { [ s, S, bracketleft ] };     // AltGr+S = [
+    key <AC03> { [ d, D, parenleft ] };       // AltGr+D = (
+    key <AC04> { [ f, F, parenright ] };      // AltGr+F = )
+    key <AC05> { [ g, G, bracketright ] };    // AltGr+G = ]
+    key <AC06> { [ h, H, braceright ] };      // AltGr+H = }
+    key <AD11> { [ bracketleft, braceleft, grave ] }; // AltGr+Ü = `
+}
+
