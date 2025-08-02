@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e # Exit on error
+
+SCRIPTDIR="{{ .chezmoi.sourceDir }}/scripts"
+
+sudo cp "$SCRIPTDIR/etc/udev/rules.d/50-qmk.rules" "/etc/udev/rules.d/50-qmk.rules"
+
+echo "✅ qmk rules copied. please restart PC to allow qmk / via to work properly."
