@@ -31,18 +31,18 @@
   _dpi-sliding: 28
   _modelId: B03400000000
   _sensitive: {divert-keys: false, dpi: false, hires-scroll-mode: false, hires-smooth-invert: false, hires-smooth-resolution: false, reprogrammable-keys: false,
-    scroll-ratchet: false, smart-shift: false, thumb-scroll-mode: false}
+    scroll-ratchet: false, smart-shift: false, thumb-scroll-mode: true}
   _serial: 0FB8EA09
   _unitId: 0FB8EA09
   _wpid: B034
   change-host: null
-  divert-keys: {82: 0, 83: 0, 86: 3, 195: 0, 196: 0}
-  dpi: 1800
+  divert-keys: {82: 0, 83: 0, 86: 0, 195: 0, 196: 0}
+  dpi: 1600
   hires-scroll-mode: false
   hires-smooth-invert: false
   hires-smooth-resolution: false
-  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 82, 86: 86, 195: 195, 196: 196}
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
   scroll-ratchet: 1
   smart-shift: 50
   thumb-scroll-invert: false
-  thumb-scroll-mode: true
+  thumb-scroll-mode: false
