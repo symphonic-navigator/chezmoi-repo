@@ -15,5 +15,5 @@ xkb_symbols "basic" {
     key <BKSL> { [ numbersign, apostrophe, apostrophe, apostrophe ] }; // AltGr+# = '
     key <AC11> { [ adiaresis, Adiaresis, asterisk ] };
     key <AE12> { [ apostrophe, acute, grave, quotedbl ] };
-    key <SPCE> { [ space, U00A0, U202F, space ] };
+    // key <SPCE> { [ space, U00A0, U202F, space ] };
 };
