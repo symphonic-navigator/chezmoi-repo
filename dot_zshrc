@@ -34,6 +34,8 @@ setopt \
 ZSH_THEME="robbyrussell"
 
 plugins=(
+    chezmoi
+    direnv
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
