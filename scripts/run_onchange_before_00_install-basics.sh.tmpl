@@ -51,6 +51,7 @@ install-pacman \
   exa \
   eza \
   fastfetch \
+  feh \
   git \
   github-cli \
   hunspell-de \
@@ -98,6 +99,14 @@ install-yay \
   ttf-b612 \
   visual-studio-code-bin \
   zen-browser-bin
+
+# feh is my image viewer of choice
+echo "🧑‍🎨 Making feh the default image viewer..."
+
+xdg-mime default feh.desktop image/png
+xdg-mime default feh.desktop image/jpeg
+xdg-mime default feh.desktop image/webp
+xdg-mime default feh.desktop image/gif
 
 # clevo / tuxedo / xmg hardware detection
 if hostnamectl | grep -qi 'tuxedo\|xmg\|clevo'; then
