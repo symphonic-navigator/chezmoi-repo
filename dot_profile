@@ -6,3 +6,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # nim
 export PATH="$PATH:$HOME/.nimble/bin"
+
+# hf
+export HF_HOME="/mnt/games/ai/diffusion"
