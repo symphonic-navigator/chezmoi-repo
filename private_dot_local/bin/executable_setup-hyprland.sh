@@ -41,6 +41,7 @@ fi
 # --- Common Setup ---
 systemctl --user enable --now hyprland-keep-kitty-quake-alive.timer
 systemctl --user enable --now hyprland-keep-ncspot-alive.timer
+systemctl --user enable --now hyprland-keep-cool-retro-term-alive.timer
 echo "✅ common hyprland setup."
 
 if [[ "$IS_LAPTOP" == false ]]; then
