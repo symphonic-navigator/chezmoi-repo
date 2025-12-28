@@ -1,0 +1,18 @@
+[pyprland]
+plugins = ["scratchpads"]
+
+[scratchpads.pavucontrol]
+command = "pavucontrol"
+size = "60% 40%"
+position = "20% 30%"
+class = "org.pulseaudio.pavucontrol"
+unfocus = "hide"
+lazy = "true"
+
+[scratchpads.blueman-manager]
+command = "blueman-manager"
+size = "60% 40%"
+position = "20% 30%"
+class = "blueman-manager"
+unfocus = "hide"
+lazy = "true"
