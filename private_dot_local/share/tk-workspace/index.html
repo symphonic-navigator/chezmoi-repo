@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>tk-workspace-browser</title>
+  <link rel="stylesheet" href="https://unpkg.com/electron-tabs@latest/dist/electron-tabs.css">
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #111;
+    color: white;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  tab-group {
+    flex: 1;
+    min-height: 0;
+  }
+  </style>
+</head>
+<body>
+  <tab-group></tab-group>
+
+  <script src="https://unpkg.com/electron-tabs@latest/dist/electron-tabs.js"></script>
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    const tabGroup = document.querySelector('tab-group');
+
+    // Tabs aus der JSON-Datei laden
+    fetch('tabs.json')
+      .then(response => response.json())
+      .then(tabs => {
+        tabs.forEach((tab, index) => {
+          tabGroup.addTab({
+            title: tab.title,
+            src: tab.src,
+            closable: false,
+            allowpopups: true,
+            active: index === 0
+          });
+        });
+
+        // STYLING: Nach dem Laden ins Shadow DOM eingreifen
+        setTimeout(() => {
+          const shadowRoot = tabGroup.shadowRoot;
+          if (shadowRoot) {
+            // Inject custom styles
+            const style = document.createElement('style');
+            style.textContent = `
+  .tab-title {
+    font-size: 16px !important;
+    font-family: 'JetBrains Mono SemiBold', Arial, sans-serif !important;
+    font-weight: 700 !important;
+    color: #c0caf5 !important;  /* Tokyo Night Foreground */
+  }
+  
+  .tab {
+    background: #1a1b26 !important;  /* Tokyo Night Background */
+    height: 60px !important;
+    border: none !important;
+    border-right: 1px solid #414868 !important;
+  }
+  
+  .tab:hover {
+    background: #24283b !important;  /* Leicht heller */
+  }
+  
+  .tab.active {
+    background: #292e42 !important;  /* Aktiver Tab */
+    border-bottom: 3px solid #7aa2f7 !important;  /* Tokyo Night Blue Accent */
+  }
+  
+  nav.visible {
+    background: #16161e !important;  /* Dunkleres Background */
+    height: 60px !important;
+    border-bottom: 2px solid #414868 !important;
+  }
+
+  .tab-content {
+    flex: 1 !important;
+    min-height: 0 !important;
+    display: flex !important;
+  }
+
+  webview {
+    flex: 1 !important;
+    display: flex !important;
+  }
+            `;
+            shadowRoot.appendChild(style);
+          }
+        }, 100);
+      })
+      .catch(err => {
+        console.error('Fehler beim Laden der tabs.json:', err);
+        document.body.innerHTML += '<h1 style="color:white; text-align:center; margin-top:50px;">Fehler: tabs.json konnte nicht geladen werden</h1>';
+      });
+
+  </script>
+</body>
+</html>
+

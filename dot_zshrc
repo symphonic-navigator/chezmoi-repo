@@ -64,7 +64,7 @@ fi
 
 # 6. Aliases
 # -------------------------------------------------------------
-alias ls='exa'
+alias ls='eza'
 alias vim='nvim'
 alias v='nvim'
 alias reset='clear && source ~/.zshrc && hyprctl reload'

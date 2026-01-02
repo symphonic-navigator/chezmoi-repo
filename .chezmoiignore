@@ -7,4 +7,4 @@
 **/lazy-lock.json
 **/userstate.cbor
 **/*.local.conf
-
+**/tk-workspace/node_modules/*

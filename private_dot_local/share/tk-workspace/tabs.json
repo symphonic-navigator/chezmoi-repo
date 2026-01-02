@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Grok",
+    "src": "https://grok.com"
+  },
+  {
+    "title": "Claude",
+    "src": "https://claude.ai"
+  },
+  {
+    "title": "LeChat",
+    "src": "https://chat.mistral.ai"
+  },
+  {
+    "title": "chat.tidesson.net",
+    "src": "https://chat.tidesson.net"
+  },
+  {
+    "title": "nano-gpt",
+    "src": "https://nano-gpt.com"
+  },
+  {
+    "title": "Venice",
+    "src": "https://venice.ai"
+  }
+]
