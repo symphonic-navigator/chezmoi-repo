@@ -91,9 +91,15 @@
     display: flex !important;
   }
 
+  .views {
+    height: calc(100vh - 60px) !important;
+    position: relative !important;
+  }
+
   webview {
     flex: 1 !important;
     display: flex !important;
+    height: 100% !important;
   }
             `;
             shadowRoot.appendChild(style);
