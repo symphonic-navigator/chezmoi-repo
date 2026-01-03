@@ -107,8 +107,8 @@
         }, 100);
       })
       .catch(err => {
-        console.error('Fehler beim Laden der tabs.json:', err);
-        document.body.innerHTML += '<h1 style="color:white; text-align:center; margin-top:50px;">Fehler: tabs.json konnte nicht geladen werden</h1>';
+        console.error('Error loading tabs.json:', err);
+        document.body.innerHTML += '<h1 style="color:white; text-align:center; margin-top:50px;">run setup-work.sh or setup-personal.sh and quit this application</h1>';
       });
 
   </script>
