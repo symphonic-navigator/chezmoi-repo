@@ -7,4 +7,24 @@
 **/lazy-lock.json
 **/userstate.cbor
 **/*.local.conf
-**/tk-workspace/node_modules/*
+
+# Python virtual environments
+**/venv/
+**/.venv/
+**/env/
+**/.env/
+
+# Python cache and compiled files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Log files
+**/*.log
+
+# Profiles
+**/.profile/
+
+# Per machine configuration
+**/.multibrowser/tabs.json

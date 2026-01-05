@@ -1,0 +1,38 @@
+/**
+ * MultiBrowser Tokyo Night Theme
+ * 
+ * Inspired by the popular Tokyo Night color scheme
+ * Features beautiful blue/purple accents on dark background
+ */
+
+QMainWindow {
+    background-color: #1a1b26;
+    color: #c0caf5;
+}
+
+QTabWidget::pane {
+    border: 1px solid #16161e;
+    background-color: #16161e;
+}
+
+QTabBar::tab {
+    background-color: #16161e;
+    color: #7aa2f7;
+    padding: 8px 16px;
+    border: 1px solid #16161e;
+    border-bottom: none;
+    min-width: 120px;
+    font-family: "JetBrains Mono Medium", "Fira Code Nerd Font Med", monospace;
+    font-size: 16px;
+}
+
+QTabBar::tab:selected {
+    background-color: #7aa2f7;
+    color: #16161e;
+    border-color: #7aa2f7;
+}
+
+QTabBar::tab:hover {
+    background-color: #1e1e2e;
+    color: #7aa2f7;
+}

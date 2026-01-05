@@ -28,18 +28,3 @@ command = "qalculate-gtk"
 size = "40% 40%"
 position = "30% 30%"
 class = "qalculate-gtk"
-
-[scratchpads.tk]
-use = "defaults"
-command = "npm --prefix ~/.local/share/tk-workspace start"
-size = "100% 100%"
-position = "0% 0%"
-match_by = "title"
-title = "tk-workspace-browser"
-
-[scratchpads.bitwarden]
-use = "defaults"
-command = "bitwarden"
-size = "50% 50%"
-position = "25% 25%"
-class = "Bitwarden"

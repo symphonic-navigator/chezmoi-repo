@@ -1,0 +1,36 @@
+/**
+ * MultiBrowser Dark Theme
+ * 
+ * A professional dark theme with blue accents
+ */
+
+QMainWindow {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+QTabWidget::pane {
+    border: 1px solid #333333;
+    background-color: #252526;
+}
+
+QTabBar::tab {
+    background-color: #252526;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid #333333;
+    border-bottom: none;
+    min-width: 120px;
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 24px;
+}
+
+QTabBar::tab:selected {
+    background-color: #0078d7;
+    color: #ffffff;
+    border-color: #0078d7;
+}
+
+QTabBar::tab:hover {
+    background-color: #2d2d30;
+}
