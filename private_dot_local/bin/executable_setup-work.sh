@@ -1,5 +1,5 @@
 #! /bin/bash
 
-cp ~/.local/share/tk-workspace/tabs.json.work ~/.local/share/tk-workspace/tabs.json
+cp ~/.multibrowser/tabs.json.work ~/.multibrowser/tabs.json
 
 echo "✅ tk setup for work"
