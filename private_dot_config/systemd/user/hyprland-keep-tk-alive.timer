@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Hyprland "keep tk alive" every 5 seconds
+
+[Timer]
+OnBootSec=7s
+OnUnitActiveSec=5s
+AccuracySec=1s
+Unit=hyprland-keep-tk-alive.service
+
+[Install]
+WantedBy=default.target
+
