@@ -16,6 +16,8 @@ A lightweight tabbed web browser built with PyQt6 and QtWebEngine, designed for 
   - `Ctrl+0`: Reset zoom
 - **Google.com Token Support**: Full web engine compatibility for modern websites
 - **Fixed Tab Configuration**: No add/close tab functionality (as requested)
+- **Microphone & Camera Access**: Automatic permission granting for media devices
+- **Popup Window Support**: Popup windows open as new tabs for Google login and other authentication flows
 
 ## Installation
 
@@ -218,6 +220,30 @@ The browser is configured with full QtWebEngine settings to ensure compatibility
 - Modern web APIs
 
 This ensures that Google.com tokens and other authentication mechanisms work properly.
+
+## Microphone and Camera Access
+
+The browser now supports automatic permission granting for microphone and camera access:
+
+- **Automatic Permission Granting**: Websites can access microphone and camera without manual prompts
+- **Supported Features**:
+  - Audio capture (microphone)
+  - Video capture (camera)
+  - Combined audio/video capture
+  - Screen sharing
+- **Security**: Permissions are granted on a per-origin basis and logged for transparency
+
+**Note**: This feature is designed for trusted applications. If you need more restrictive permission control, you can modify the `handle_feature_permission_request` method in `main.py`.
+
+## Popup Window Support
+
+The browser now handles popup windows by opening them as new tabs:
+
+- **Google Login Popups**: Authentication flows that require popup windows now work
+- **General Popup Support**: Any website that uses `window.open()` will have the popup opened as a new tab
+- **Seamless Integration**: Popups inherit the same profile and permissions as the parent tab
+
+This enables Google account login and other authentication flows that previously failed due to popup blocking.
 
 ## Development
 

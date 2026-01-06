@@ -8,7 +8,7 @@ import threading
 import time
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTabWidget, QVBoxLayout, QWidget, QTabBar, QLabel, QHBoxLayout, QToolButton, QMenu
 from PyQt6.QtWebEngineWidgets import QWebEngineView
-from PyQt6.QtWebEngineCore import QWebEngineSettings, QWebEngineProfile
+from PyQt6.QtWebEngineCore import QWebEngineSettings, QWebEngineProfile, QWebEnginePage
 from PyQt6.QtCore import Qt, QStandardPaths, QFile, QTextStream, QIODevice, QSize
 from PyQt6.QtGui import QFontDatabase, QFont, QColor, QShortcut, QKeySequence, QAction
 
@@ -142,6 +142,66 @@ class BrowserTab(QWebEngineView):
         settings.setAttribute(QWebEngineSettings.WebAttribute.AllowGeolocationOnInsecureOrigins, False)
         settings.setAttribute(QWebEngineSettings.WebAttribute.PrintElementBackgrounds, True)
         settings.setAttribute(QWebEngineSettings.WebAttribute.PdfViewerEnabled, True)
+        
+        # Set up permission handling for microphone and camera access
+        self.setup_permission_handling()
+        
+        # Set up popup window handling
+        self.setup_popup_handling()
+    
+    def setup_permission_handling(self):
+        """Set up permission handling for microphone, camera, and other features"""
+        # Connect the feature permission requested signal
+        self.page().featurePermissionRequested.connect(self.handle_feature_permission_request)
+        
+        # Also connect the general permission requested signal for broader compatibility
+        self.page().permissionRequested.connect(self.handle_permission_request)
+        
+        print("✓ Permission handling set up for microphone, camera, and other features")
+    
+    def handle_feature_permission_request(self, security_origin, feature):
+        """Handle feature permission requests (microphone, camera, etc.)"""
+        # Automatically grant permissions for media devices (microphone, camera)
+        if feature in [
+            QWebEnginePage.Feature.MediaAudioCapture,
+            QWebEnginePage.Feature.MediaVideoCapture,
+            QWebEnginePage.Feature.MediaAudioVideoCapture,
+            QWebEnginePage.Feature.DesktopAudioVideoCapture,
+            QWebEnginePage.Feature.DesktopVideoCapture
+        ]:
+            # Grant the permission
+            self.page().setFeaturePermission(
+                security_origin, 
+                feature, 
+                QWebEnginePage.PermissionPolicy.PermissionGrantedByUser
+            )
+            print(f"🎤 Permission granted for {feature} from {security_origin.host()}")
+            return
+        
+        # For other features, use the default behavior (ask user or deny)
+        print(f"❓ Feature permission requested: {feature} from {security_origin.host()}")
+    
+    def handle_permission_request(self, security_origin, permission):
+        """Handle general permission requests"""
+        # For now, we'll just log these requests
+        print(f"🔐 Permission requested: {permission} from {security_origin.host()}")
+    
+    def setup_popup_handling(self):
+        """Set up handling for popup windows"""
+        # Connect the signal for when a new window is requested
+        self.page().createWindow = self.handle_create_window
+        print("✓ Popup window handling set up")
+    
+    def handle_create_window(self, window_type):
+        """Handle creation of new windows (popups)"""
+        # Create a new BrowserTab for the popup
+        popup_tab = BrowserTab(profile=self.page().profile())
+        
+        # Connect the URL changed signal to update the popup content
+        popup_tab.page().urlChanged.connect(lambda url: print(f"🌐 Popup window URL changed: {url}"))
+        
+        print(f"🪟 New window created (type: {window_type})")
+        return popup_tab
 
 class MultiBrowser(QMainWindow):
     def __init__(self, config_file="tabs.json", window_class=None, theme=None, dark_mode=None, config=None):
