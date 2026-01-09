@@ -39,18 +39,10 @@ else
 fi
 
 # --- Common Setup ---
-systemctl --user enable --now hyprland-keep-kitty-quake-alive.timer
-systemctl --user enable --now hyprland-keep-ncspot-alive.timer
-systemctl --user enable --now hyprland-keep-tk-alive.timer
+systemctl --user disable --now hyprland-keep-kitty-quake-alive.timer || true
+systemctl --user disable --now hyprland-keep-ncspot-alive.timer || true
+systemctl --user disable --now hyprland-keep-tk-alive.timer || true
 echo "✅ common hyprland setup."
-
-if [[ "$IS_LAPTOP" == false ]]; then
-  echo "ℹ️ not a laptop, exiting."
-  exit 2
-fi
-
-# --- Laptop Setup ---
-echo "✅ hyprland laptop setup successfully established."
 
 # --- Reload hyprland ---
 hyprctl reload -q

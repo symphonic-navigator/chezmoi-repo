@@ -1,7 +1,0 @@
-[Unit]
-Description=Hyprland "keep ncspot alive"
-
-[Service]
-Type=oneshot
-ExecStart=hyprctl dispatch exec %h/.local/bin/hyprland-keep-cool-retro-term-alive.sh
-
