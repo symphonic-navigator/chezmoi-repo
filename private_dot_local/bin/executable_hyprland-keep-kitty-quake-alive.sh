@@ -12,7 +12,7 @@ QUERY=".[] | select(.class == \"$CLASS_NAME\")"
 
 if ! hyprctl clients -j | jq -e "$QUERY" >/dev/null; then
   echo "[$(date)] $CLASS_NAME not found, launching..."
-  KITTY_SHELL_OVERRIDE=zellij kitty -c "$BASE_CONFIG_FILE" -c "$ADDITIONAL_CONFIG_FILE" --class "$CLASS_NAME" --session "$SESSION_FILE" &
+  KITTY_ENABLE_WAYLAND=1 kitty -c "$BASE_CONFIG_FILE" -c "$ADDITIONAL_CONFIG_FILE" --class "$CLASS_NAME" --session "$SESSION_FILE" &
 else
   echo "[$(date)] $CLASS_NAME is already running."
 fi
