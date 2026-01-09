@@ -34,6 +34,8 @@ workspace = 10, name:10, persistent:true
 workspace = 11, name:11, persistent:true
 workspace = 12, name:12, persistent:true
 
+workspace = special:test, on-created-empty: kitty --class kitty-test
+
 # example rules (from wiki)
 # workspace = 3, rounding:false, decorate:false
 # workspace = name:coding, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false, decorate:false, monitor:DP-1
